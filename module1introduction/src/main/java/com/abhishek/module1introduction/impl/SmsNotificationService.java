@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 // from application.properties if you define a key value pair and that matches
 // here then only this bean gets created
-@ConditionalOnProperty(name = "notification.type", havingValue = "sms")
+//@ConditionalOnProperty(name = "notification.type", havingValue = "sms")
 public class SmsNotificationService implements NotificationService {
 
     @Override
