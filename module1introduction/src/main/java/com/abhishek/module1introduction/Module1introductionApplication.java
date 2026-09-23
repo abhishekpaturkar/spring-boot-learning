@@ -1,22 +1,24 @@
 package com.abhishek.module1introduction;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-/*
-	CommandLineRunner
-	-> a functional interface in Spring Boot used to execute custom code
-	once after the Spring application context has been fully initialized
-	but before the application is completely started
- */
-
 @SpringBootApplication
 public class Module1introductionApplication implements CommandLineRunner {
-	// To inject the bean here this annotation is used
-	@Autowired
-	PaymentService paymentService = null;
+
+	// Field Injection (Avoid in production)
+	// as we are creating a field notificationService where the dependency gets injected
+//	@Autowired
+//	NotificationService notificationService;
+
+	// Constructor Injection (Recommended)
+	final NotificationService notificationService;
+	public Module1introductionApplication(@Qualifier("emailNotification") NotificationService notificationService) {
+		this.notificationService = notificationService;
+	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(Module1introductionApplication.class, args);
@@ -25,6 +27,6 @@ public class Module1introductionApplication implements CommandLineRunner {
 	// Method from CommandLineRunner
 	@Override
 	public void run(String... args) throws Exception {
-		paymentService.pay();
+		notificationService.send("hello");
 	}
 }
