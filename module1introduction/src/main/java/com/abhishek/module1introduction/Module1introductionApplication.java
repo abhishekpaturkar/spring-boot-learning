@@ -15,8 +15,14 @@ public class Module1introductionApplication implements CommandLineRunner {
 //	NotificationService notificationService;
 
 	// Constructor Injection (Recommended)
+//	final NotificationService notificationService;
+//	public Module1introductionApplication(@Qualifier("emailNotification") NotificationService notificationService) {
+//		this.notificationService = notificationService;
+//	}
+
+	// So as the application property is set to email only the EmailNotification bean will be inserted
 	final NotificationService notificationService;
-	public Module1introductionApplication(@Qualifier("emailNotification") NotificationService notificationService) {
+	public Module1introductionApplication(NotificationService notificationService) {
 		this.notificationService = notificationService;
 	}
 
