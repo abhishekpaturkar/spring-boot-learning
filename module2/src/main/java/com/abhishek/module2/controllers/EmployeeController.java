@@ -28,7 +28,7 @@ public class EmployeeController {
     // RequestBody -> It is used to bind the HTTP request body with Java object.
     @PostMapping
     public EmployeeDTO createNewEmployee(@RequestBody EmployeeDTO inputEmployee) {
-        inputEmployee.setId(100);
+        inputEmployee.setId(100L);
         return inputEmployee;
     }
 
