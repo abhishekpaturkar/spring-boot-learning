@@ -12,24 +12,28 @@ import java.time.LocalDate;
 @RequestMapping(path = "/employees")
 public class EmployeeController {
 
-    // PathVariables -> Essentials parameters (eg. employees/123)
-    // here employeeId is mandatory which is required to retrieve information
     @GetMapping(path = "/{employeeId}")
-
-    // You don't need to everytime mention the same name in url param and method param.
-    // If you want to use different name then we need to map
-    // @PathVariable(name = "employeeId") Long id
     public EmployeeDTO getEmployeeById(@PathVariable Long employeeId) {
         return new EmployeeDTO(employeeId, "Abhishek", "abhishek@gmail.com", 23,
                 LocalDate.of(2025, 8, 11), true);
 
     }
 
-    // RequestParam -> Optional variables
-    // requiredFalse -> not mandatory field
     @GetMapping
     public String getAllEmployees(@RequestParam Integer age,
                                   @RequestParam(required = false) String sortBy) {
         return "Hi age " + age + "and Sort by " + sortBy;
+    }
+
+    // RequestBody -> It is used to bind the HTTP request body with Java object.
+    @PostMapping
+    public EmployeeDTO createNewEmployee(@RequestBody EmployeeDTO inputEmployee) {
+        inputEmployee.setId(100);
+        return inputEmployee;
+    }
+
+    @PutMapping
+    public String updateEmployeeById() {
+        return "Hello From Put Controller";
     }
 }
