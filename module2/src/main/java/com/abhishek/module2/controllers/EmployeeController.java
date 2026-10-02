@@ -3,6 +3,7 @@ package com.abhishek.module2.controllers;
 import com.abhishek.module2.dto.EmployeeDTO;
 import com.abhishek.module2.entities.EmployeeEntity;
 import com.abhishek.module2.repositories.EmployeeRepository;
+import com.abhishek.module2.services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,34 +14,28 @@ import java.util.List;
 
 @RequestMapping(path = "/employees")
 public class EmployeeController {
-    // NOTE: The below code is not recommended, Service layer should be in the middle
-    // So the Controller cannot directly talk with the Entity.
 
+    private final EmployeeService employeeService;
 
-    // NOTE: Controller should not directly connect with Repo, Service should be in the middle
-    // but for sake of the class we are importing repo directly
-
-    private final EmployeeRepository employeeRepository;
-
-    public EmployeeController(EmployeeRepository employeeRepository) {
-        this.employeeRepository = employeeRepository;
+    public EmployeeController(EmployeeService employeeService) {
+        this.employeeService = employeeService;
     }
 
     @GetMapping(path = "/{employeeId}")
-    public EmployeeEntity getEmployeeById(@PathVariable Long employeeId) {
-        return employeeRepository.findById(employeeId).orElse(null);
+    public EmployeeDTO getEmployeeById(@PathVariable Long employeeId) {
+        return employeeService.getEmployeeById(employeeId);
 
     }
 
     @GetMapping
-    public List<EmployeeEntity> getAllEmployees(@RequestParam(required = false) Integer age,
+    public List<EmployeeDTO> getAllEmployees(@RequestParam(required = false) Integer age,
                                                 @RequestParam(required = false) String sortBy) {
-        return employeeRepository.findAll();
+        return employeeService.getAllEmployees();
     }
 
     @PostMapping
-    public EmployeeEntity createNewEmployee(@RequestBody EmployeeEntity inputEmployee) {
-        return employeeRepository.save(inputEmployee);
+    public EmployeeDTO createNewEmployee(@RequestBody EmployeeDTO inputEmployee) {
+        return employeeService.createNewEmployee(inputEmployee);
     }
 
     @PutMapping
