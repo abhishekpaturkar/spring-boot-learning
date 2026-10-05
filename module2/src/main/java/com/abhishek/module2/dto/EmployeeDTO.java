@@ -1,5 +1,6 @@
 package com.abhishek.module2.dto;
 
+import com.abhishek.module2.annotations.EmployeeRoleValidation;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
@@ -32,8 +33,10 @@ public class EmployeeDTO {
     private Integer age;
 
     @NotBlank(message = "Role of the Employee cannot be blank")
-    @Pattern(regexp = "^(ADMIN|USER)$", message = "Role of Employee can be USER or ADMIN")
-    private String role; // this can be ADMIN or USER
+//    @Pattern(regexp = "^(ADMIN|USER)$", message = "Role of Employee can be USER or ADMIN")
+    // Custom annotations
+    @EmployeeRoleValidation
+    private String role;
 
     @NotNull(message = "Salary of Employee cannot be null")
     @Positive(message = "Salary of Employee should be positive")
