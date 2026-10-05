@@ -1,6 +1,7 @@
 package com.abhishek.module2.controllers;
 
 import com.abhishek.module2.dto.EmployeeDTO;
+import com.abhishek.module2.exceptions.ResourceNotFoundException;
 import com.abhishek.module2.services.EmployeeService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -28,13 +29,7 @@ public class EmployeeController {
         Optional<EmployeeDTO> employeeDTO = employeeService.getEmployeeById(employeeId);
         return employeeDTO
                 .map(employeeDTO1 -> ResponseEntity.ok(employeeDTO1))
-                .orElseThrow(() -> new NoSuchElementException("Employee not found"));
-    }
-
-    // Defining exception handling for NoSuchElementException
-    @ExceptionHandler(NoSuchElementException.class)
-    public ResponseEntity<String> handleEmployeeNotFound(NoSuchElementException e) {
-        return new ResponseEntity<>("Employee NOT FOUND", HttpStatus.NOT_FOUND);
+                .orElseThrow(() -> new ResourceNotFoundException("Employee not found with id: " + employeeId));
     }
 
     @GetMapping
