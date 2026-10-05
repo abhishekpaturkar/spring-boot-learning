@@ -19,26 +19,26 @@ public class GlobalExceptionHandler {
     // Defining exception handling for NoSuchElementException
     // Now it is global so we should call it as Resource instead of Employee
     @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<ApiError> handleResourceNotFound(ResourceNotFoundException e) {
+    public ResponseEntity<ApiResponse<?>> handleResourceNotFound(ResourceNotFoundException e) {
         ApiError apiError = ApiError.builder()
                 .status(HttpStatus.NOT_FOUND)
                 .message(e.getMessage())
                 .build();
-        return new ResponseEntity<>(apiError, HttpStatus.NOT_FOUND);
+        return buildErrorResponseEntity(apiError);
     }
 
     // Any other exception
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<ApiError> handleInternalServerException(Exception e) {
+    public ResponseEntity<ApiResponse<?>> handleInternalServerException(Exception e) {
         ApiError apiError = ApiError.builder()
                 .status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .message(e.getMessage())
                 .build();
-        return new ResponseEntity<>(apiError, HttpStatus.NOT_FOUND);
+        return buildErrorResponseEntity(apiError);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<ApiError> handleInputValidationErrors(MethodArgumentNotValidException e) {
+    public ResponseEntity<ApiResponse<?>> handleInputValidationErrors(MethodArgumentNotValidException e) {
         List<String> errors = e
                 .getBindingResult()
                 .getAllErrors()
@@ -51,6 +51,10 @@ public class GlobalExceptionHandler {
                 .message("input validation failed")
                 .subErrors(errors)
                 .build();
-        return new ResponseEntity<>(apiError, HttpStatus.NOT_FOUND);
+        return buildErrorResponseEntity(apiError);
+    }
+
+    private ResponseEntity<ApiResponse<?>> buildErrorResponseEntity(ApiError apiError) {
+        return new ResponseEntity<>(new ApiResponse<>(apiError), apiError.getStatus());
     }
 }
