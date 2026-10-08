@@ -21,8 +21,6 @@ import java.time.LocalDateTime;
 @Table(
         name = "product_table",
         uniqueConstraints = {
-                // SKU should be unique
-                @UniqueConstraint(name = "sku_unique", columnNames = {"sku"}),
                 // Title_X and Price should be unique pair
                 // Biscuit -> Rs.20 should not come again in the DB
                 @UniqueConstraint(name = "title_price_unique", columnNames = {"title_x", "price"})
