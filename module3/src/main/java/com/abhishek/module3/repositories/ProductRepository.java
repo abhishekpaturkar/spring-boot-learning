@@ -1,6 +1,7 @@
 package com.abhishek.module3.repositories;
 
 import com.abhishek.module3.entities.ProductEntity;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -25,7 +26,7 @@ public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
 
     List<ProductEntity> findByTitleLike(String pattern);
 
-    List<ProductEntity> findByTitleContaining(String pattern);
+    List<ProductEntity> findByTitleContainingIgnoreCase(String pattern, Pageable pageable);
 
     @Query("select e from ProductEntity e where e.title = ?1 and e.price=?2")
     Optional<ProductEntity> findByTitleAndPrice(String title, BigDecimal price);

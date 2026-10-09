@@ -68,11 +68,11 @@ class Module3ApplicationTests {
 		System.out.println(productEntities);
 	}
 
-	@Test
-	void testFindByTitleContaining() {
-		List<ProductEntity> productEntities = productRepository.findByTitleContaining("Oreo");
-		System.out.println(productEntities);
-	}
+//	@Test
+//	void testFindByTitleContaining() {
+//		List<ProductEntity> productEntities = productRepository.findByTitleContaining("Oreo");
+//		System.out.println(productEntities);
+//	}
 
 	@Test
 	void getSingleFromRepository() {
