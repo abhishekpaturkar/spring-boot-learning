@@ -36,7 +36,6 @@ class Module3ApplicationTests {
 
 	@Test
 	void getRepository() {
-//		List<ProductEntity> productEntities = productRepository.findAll();
 		List<ProductEntity> productEntities = productRepository.findByTitle("Pepsi");
 		System.out.println(productEntities);
 	}
