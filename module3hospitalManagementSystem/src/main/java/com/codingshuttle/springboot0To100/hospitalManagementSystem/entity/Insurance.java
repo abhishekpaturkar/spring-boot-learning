@@ -1,10 +1,7 @@
 package com.codingshuttle.springboot0To100.hospitalManagementSystem.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
@@ -15,6 +12,8 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
+@ToString
 public class Insurance {
 
     @Id
@@ -39,6 +38,7 @@ public class Insurance {
     // So to avoid this we need to define mappedBy inside OneToOne and give the field name which is present in patient table
     // This side in inverse side
     @OneToOne(mappedBy = "insurance")
+    @ToString.Exclude
     private Patient patient;
 
 }

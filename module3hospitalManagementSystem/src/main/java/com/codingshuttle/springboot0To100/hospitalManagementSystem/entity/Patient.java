@@ -37,10 +37,13 @@ public class Patient {
     @CreationTimestamp
     private LocalDateTime createdAt;
 
-    @OneToOne
+    // When parent updated then this child will also update
+//    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @OneToOne(cascade = CascadeType.ALL) // This will take care of everything (delete child as well when parent deleted)
     @JoinColumn(name = "patient_insurance") // This Annotation should be on Owning side
     private Insurance insurance; // owning side
 
-    @OneToMany(mappedBy = "patient") // inverse side
+    // We we try to delete the patient it will automatically delete all his appointment
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL) // inverse side
     private Set<Appointment> appointment = new HashSet<>();
 }

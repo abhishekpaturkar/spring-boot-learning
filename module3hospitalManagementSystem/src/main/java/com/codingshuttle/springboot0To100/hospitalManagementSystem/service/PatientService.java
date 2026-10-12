@@ -34,4 +34,10 @@ public class PatientService {
         // Dirtied entities
         p1.setName("Random Name");
     }
+
+    @Transactional
+    public void deletePatient(Long patientId) {
+        patientRepository.findById(patientId).orElseThrow();
+        patientRepository.deleteById(patientId);
+    }
 }
