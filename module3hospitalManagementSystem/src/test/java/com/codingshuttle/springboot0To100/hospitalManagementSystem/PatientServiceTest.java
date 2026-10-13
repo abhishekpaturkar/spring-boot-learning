@@ -23,8 +23,13 @@ public class PatientServiceTest {
 
     @Test
     public void testPatient() {
-        patientService.testPatientTransaction();
+//        patientService.testPatientTransaction();
 
+//        List<Patient> patients = patientRepository.findAll();
+        List<Patient> patients = patientRepository.getAllPatientsWithAppointments();
+        for (var patient : patients) {
+            System.out.println(patient);
+        }
     }
 
 

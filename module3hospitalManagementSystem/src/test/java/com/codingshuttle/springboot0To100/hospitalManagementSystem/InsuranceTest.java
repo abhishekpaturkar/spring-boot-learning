@@ -41,4 +41,10 @@ public class InsuranceTest {
     public void testDeleteInsurance() {
         patientService.deletePatient(1L);
     }
+
+    @Test
+    public void testUpdateInsurance() {
+        var patient = insuranceService.removeInsuranceOfPatient(1L);
+        System.out.println(patient);
+    }
 }

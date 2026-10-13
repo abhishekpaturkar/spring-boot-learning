@@ -37,13 +37,20 @@ public class Patient {
     @CreationTimestamp
     private LocalDateTime createdAt;
 
-    // When parent updated then this child will also update
-//    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @OneToOne(cascade = CascadeType.ALL) // This will take care of everything (delete child as well when parent deleted)
+    // orphan removal -> When the user want to remove the insurance from the patient
+    // i.e set the insurance to null, then the previously associated insurance will be deleted
+    // This should only be added on the parent side
+
+    // FetchType.EAGER -> this will fetch insurance as well when try to fetch the patient using join
+
+    // FetchType.LAZY -> will not perfrom join call when we try to get the patient
+
+    // For getting insurance we can call patient.getInsurace() this will fetch insurance in separate query
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @JoinColumn(name = "patient_insurance") // This Annotation should be on Owning side
     private Insurance insurance; // owning side
 
     // We we try to delete the patient it will automatically delete all his appointment
-    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL) // inverse side
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Appointment> appointment = new HashSet<>();
 }

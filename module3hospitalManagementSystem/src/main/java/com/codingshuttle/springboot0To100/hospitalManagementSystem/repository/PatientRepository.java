@@ -30,4 +30,10 @@ public interface PatientRepository extends JpaRepository<Patient, Long> {
     @Modifying
     @Query("update Patient p set p.name = :name where p.id=:id")
     int updatePatientNameWithId(@Param("name") String name, @Param("id") Long id);
+
+    // This will create a single query
+    // Not two queries one for patient and other for appointment
+    // This is the JPQL syntax
+    @Query("select p from Patient p LEFT JOIN FETCH p.appointment")
+    List<Patient> getAllPatientsWithAppointments();
 }
