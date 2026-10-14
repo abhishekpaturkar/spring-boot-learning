@@ -18,4 +18,23 @@ public class PostEntity extends AuditableEntity {
     private String title;
 
     private String description;
+
+    // These methods are in AuditingEntityListener
+    // Database lifecycle methods
+    // We can implement our own version of auditing
+    // This can also be used for any update on any other entity based on here save, update or delete
+    @PrePersist
+    void beforeSave() {
+
+    }
+
+    @PreUpdate
+    void beforeUpdate() {
+
+    }
+
+    @PreRemove
+    void beforeDelete() {
+
+    }
 }
