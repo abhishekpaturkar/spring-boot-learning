@@ -2,6 +2,8 @@ package com.abhishek.module4.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.envers.Audited;
+import org.hibernate.envers.NotAudited;
 
 @Entity
 @Table(name = "posts")
@@ -9,6 +11,8 @@ import lombok.*;
 @NoArgsConstructor
 @Getter
 @Setter
+// To tell hibernate envers to keep the field in this class in the auditing
+@Audited
 public class PostEntity extends AuditableEntity {
 
     @Id
@@ -17,6 +21,8 @@ public class PostEntity extends AuditableEntity {
 
     private String title;
 
+    // This field will be ignored for auditing by hibernate envers
+//    @NotAudited
     private String description;
 
     // These methods are in AuditingEntityListener

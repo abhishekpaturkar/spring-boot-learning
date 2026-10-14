@@ -5,6 +5,7 @@ import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.envers.Audited;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
@@ -17,6 +18,11 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @EntityListeners(AuditingEntityListener.class)
+@Audited // telling envers to track this class fields
+
+// This will create tables in our db
+// 1. revInfo -> revision info (track all the changes in any entity)
+// 2. posts_aud -> this is specific to entity as we added @Audited on PostEntity (posts entity)
 public class AuditableEntity {
 
     // Auditing: This will automatically fill by the JPA

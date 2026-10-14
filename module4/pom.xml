@@ -70,6 +70,13 @@
 			<artifactId>modelmapper</artifactId>
 			<version>3.2.6</version>
 		</dependency>
+
+		<!-- Source: https://mvnrepository.com/artifact/org.hibernate/hibernate-envers -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-envers</artifactId>
+			<version>7.4.13.Final</version>
+		</dependency>
 	</dependencies>
 
 	<build>
