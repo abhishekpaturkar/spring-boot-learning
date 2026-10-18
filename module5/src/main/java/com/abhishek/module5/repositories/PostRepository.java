@@ -1,6 +1,6 @@
 package com.abhishek.module5.repositories;
 
-import com.example.demo4.SecurityApp.entities.PostEntity;
+import com.abhishek.module5.entities.PostEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

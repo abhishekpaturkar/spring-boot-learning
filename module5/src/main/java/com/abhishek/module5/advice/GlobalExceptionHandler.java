@@ -1,6 +1,6 @@
 package com.abhishek.module5.advice;
 
-import com.example.demo4.SecurityApp.exceptions.ResourceNotFoundException;
+import com.abhishek.module5.exceptions.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

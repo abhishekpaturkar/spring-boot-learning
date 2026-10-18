@@ -1,7 +1,7 @@
 package com.abhishek.module5.services;
 
-import com.example.demo4.SecurityApp.exceptions.ResourceNotFoundException;
-import com.example.demo4.SecurityApp.repositories.UserRepository;
+import com.abhishek.module5.exceptions.ResourceNotFoundException;
+import com.abhishek.module5.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

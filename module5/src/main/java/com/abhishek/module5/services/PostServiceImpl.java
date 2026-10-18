@@ -1,9 +1,9 @@
 package com.abhishek.module5.services;
 
-import com.example.demo4.SecurityApp.dto.PostDTO;
-import com.example.demo4.SecurityApp.entities.PostEntity;
-import com.example.demo4.SecurityApp.exceptions.ResourceNotFoundException;
-import com.example.demo4.SecurityApp.repositories.PostRepository;
+import com.abhishek.module5.dto.PostDTO;
+import com.abhishek.module5.entities.PostEntity;
+import com.abhishek.module5.exceptions.ResourceNotFoundException;
+import com.abhishek.module5.repositories.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;

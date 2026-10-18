@@ -1,6 +1,6 @@
 package com.abhishek.module5.services;
 
-import com.example.demo4.SecurityApp.dto.PostDTO;
+import com.abhishek.module5.dto.PostDTO;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package com.abhishek.module5.controllers;
 
-import com.example.demo4.SecurityApp.dto.PostDTO;
-import com.example.demo4.SecurityApp.services.PostService;
+import com.abhishek.module5.dto.PostDTO;
+import com.abhishek.module5.services.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
