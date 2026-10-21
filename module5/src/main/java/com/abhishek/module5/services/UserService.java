@@ -8,6 +8,12 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+/*
+UserDetailsService is a core interface in Spring Security responsible for
+loading user-specific data during the authentication process.
+It is primarily used by the DaoAuthenticationProvider to retrieve a username, password,
+and other attributes required for verifying user credentials.
+ */
 @Service
 @RequiredArgsConstructor
 public class UserService implements UserDetailsService {
