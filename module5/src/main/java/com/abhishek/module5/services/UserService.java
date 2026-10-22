@@ -14,7 +14,7 @@ loading user-specific data during the authentication process.
 It is primarily used by the DaoAuthenticationProvider to retrieve a username, password,
 and other attributes required for verifying user credentials.
  */
-@Service
+//@Service
 @RequiredArgsConstructor
 public class UserService implements UserDetailsService {
 
