@@ -1,6 +1,10 @@
 package com.abhishek.module5.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -12,6 +16,10 @@ UserDetails is an interface that represents core user information required for a
 and authorization, while UserDetailsService is the interface responsible for loading
 user-specific data (typically from a database) to support that process.
  */
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class User implements UserDetails {
 
