@@ -30,6 +30,7 @@ public class User implements UserDetails {
     @Column(unique = true)
     private String email;
     private String password;
+    private String name;
 
     // Authorities are roles like ADMIN, USER
     @Override
