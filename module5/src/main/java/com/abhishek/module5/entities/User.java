@@ -1,10 +1,7 @@
 package com.abhishek.module5.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -21,6 +18,7 @@ user-specific data (typically from a database) to support that process.
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@ToString
 public class User implements UserDetails {
 
     @Id

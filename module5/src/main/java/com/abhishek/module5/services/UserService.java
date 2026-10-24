@@ -1,6 +1,5 @@
 package com.abhishek.module5.services;
 
-import com.abhishek.module5.dto.LoginDTO;
 import com.abhishek.module5.dto.SignUpDTO;
 import com.abhishek.module5.dto.UserDTO;
 import com.abhishek.module5.entities.User;
@@ -8,10 +7,8 @@ import com.abhishek.module5.exceptions.ResourceNotFoundException;
 import com.abhishek.module5.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
+
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -32,6 +29,10 @@ public class UserService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userRepository.findByEmail(username)
                 .orElseThrow(() -> new ResourceNotFoundException("User with email "+ username +" not found"));
+    }
+
+    public User getUserById(Long userId) {
+        return userRepository.findById(userId).orElseThrow(() -> new ResourceNotFoundException("User with id "+ userId +" not found"));
     }
 
     public UserDTO signUp(SignUpDTO signUpDTO) {
