@@ -19,6 +19,7 @@ user-specific data (typically from a database) to support that process.
 @NoArgsConstructor
 @Entity
 @ToString
+@Builder
 public class User implements UserDetails {
 
     @Id
