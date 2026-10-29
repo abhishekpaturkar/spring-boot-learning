@@ -1,5 +1,6 @@
 package com.abhishek.module5.dto;
 
+import com.abhishek.module5.entities.enums.Permissions;
 import com.abhishek.module5.entities.enums.Role;
 import lombok.Data;
 
@@ -12,4 +13,6 @@ public class SignUpDTO {
     private String name;
     // Not ideal for production to have roles on signup, but for learning purposes, we can have it here
     private Set<Role> roles;
+    // Not ideal for production to have permissions on signup, but for learning purposes, we can have it here
+    private Set<Permissions> permissions;
 }

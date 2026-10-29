@@ -1,5 +1,6 @@
 package com.abhishek.module5.config;
 
+import com.abhishek.module5.entities.enums.Permissions;
 import com.abhishek.module5.entities.enums.Role;
 import com.abhishek.module5.filters.JwtAuthFilter;
 import com.abhishek.module5.handlers.OAuth2SuccessHandler;
@@ -40,6 +41,13 @@ public class WebSecurityConfig {
                         .requestMatchers(HttpMethod.GET,"/posts/**").permitAll()
                         .requestMatchers(HttpMethod.POST,"/posts/**")
                             .hasAnyRole(ADMIN.name(), CREATOR.name())
+                        .requestMatchers(HttpMethod.POST,"/posts/**")
+                            .hasAnyAuthority(Permissions.POST_CREATE.name())
+                        .requestMatchers(HttpMethod.PUT,"/posts/**")
+                            .hasAnyAuthority(Permissions.POST_UPDATE.name())
+                        .requestMatchers(HttpMethod.DELETE,"/posts/**")
+                            .hasAnyAuthority(Permissions.POST_DELETE.name())
+
                         .anyRequest().authenticated()
                 )
                 .csrf(csrfConfig -> csrfConfig.disable())
