@@ -30,7 +30,7 @@ public class EmployeeServiceImpl implements EmployeeService {
                     return new ResourceNotFoundException("Employee not found with id: " + id);
                 });
         log.info("Successfully fetched employee with id: {}", id);
-        return modelMapper.map(employee, EmployeeDto.class);
+            return modelMapper.map(employee, EmployeeDto.class);
     }
 
     @Override
@@ -62,8 +62,8 @@ public class EmployeeServiceImpl implements EmployeeService {
             throw new RuntimeException("The email of the employee cannot be updated");
         }
 
-        employeeDto.setId(null);
         modelMapper.map(employeeDto, employee);
+        employee.setId(id); // Ensure the ID is set to the existing employee's ID
 
         Employee savedEmployee = employeeRepository.save(employee);
         log.info("Successfully updated employee with id: {}", id);
