@@ -77,11 +77,10 @@ class Module7TestingApplicationTests {
 	}
 
 	double divideTwoNumbers(int a, int b) {
-		try {
-			return (double) a/b;
-		} catch (ArithmeticException e) {
-			log.error("Arithmetic Exception Occurred: " + e.getMessage());
-			throw new ArithmeticException(e.getLocalizedMessage());
+		if (b == 0) {
+			throw new ArithmeticException("/ by zero");
 		}
+
+		return (double) a / b;
 	}
 }
