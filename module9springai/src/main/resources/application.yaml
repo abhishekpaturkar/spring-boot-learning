@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: module9springai
+  ai:
+    ollama:
+      base-url: http://localhost:11434
+      chat:
+        model: qwen2.5-coder:7b
+    openai:
+      chat:
+        model: gpt-4o-mini
+        temperature: 0.9
