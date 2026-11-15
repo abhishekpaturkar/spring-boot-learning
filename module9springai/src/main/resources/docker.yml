@@ -1,0 +1,17 @@
+services:
+  postgres:
+    image: pgvector/pgvector:0.8.7-pg18-trixie
+    container_name: pgvector-local
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql
+    shm_size: 1g
+    restart: unless-stopped
+
+volumes:
+  pgdata:
