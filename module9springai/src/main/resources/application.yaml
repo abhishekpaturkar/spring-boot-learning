@@ -15,7 +15,12 @@ spring:
     vectorstore:
       pgvector:
         initialize-schema: true
+    chat:
+      memory:
+        repository:
+          jdbc.initialize-schema: always
 
+  
   datasource:
     url: jdbc:postgresql://localhost:5430/vector-db
     username: postgres
