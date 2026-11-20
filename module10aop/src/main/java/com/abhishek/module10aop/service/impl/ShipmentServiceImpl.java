@@ -1,5 +1,6 @@
 package com.abhishek.module10aop.service.impl;
 
+import com.abhishek.module10aop.aspect.MyLogging;
 import com.abhishek.module10aop.service.ShipmentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -10,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class ShipmentServiceImpl implements ShipmentService {
 
     @Override
+    @MyLogging
     public String orderPackage(Long orderId) {
         try {
             log.info("Processing the order...");
