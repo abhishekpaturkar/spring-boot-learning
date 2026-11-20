@@ -8,7 +8,7 @@ import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
-@Aspect
+//@Aspect
 @Component
 @Slf4j
 public class LoggingAspect {
@@ -21,7 +21,7 @@ public class LoggingAspect {
 
     @After("myLoggingAndAopMethodsPointCut()")
     public void afterMyLoggingAndAopMethodsPointCutAdvice() {
-        log.info("After My Logging Annotation Calls")
+        log.info("After My Logging Annotation Calls");
     }
 
 
